@@ -20,7 +20,8 @@ f.close()
 
 filewrite = open("stores","w")
 with open ("storelist.csv","r") as f:
-        storeno = [line.split(',')[0] for line in f]
+        storeno = [line.split(',') for line in f]
         for i in storeno:
-                filewrite.write(i + "\n")
+                filewrite.write(i[0] + "\n") # Write 1 column
+		 filewrite.write(i[0] + " " +  i[1] + "\n") # Write multiple columns
 filewrite.close()
