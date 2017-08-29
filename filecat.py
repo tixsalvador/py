@@ -12,3 +12,15 @@ with open (filename, "r") as f:
 	for i in firstcolumn:
 		print i[0],i[1],i[2]
 f.close()
+
+
+# With output write on a file
+
+#!/usr/bin/env python
+
+filewrite = open("stores","w")
+with open ("storelist.csv","r") as f:
+        storeno = [line.split(',')[0] for line in f]
+        for i in storeno:
+                filewrite.write(i + "\n")
+filewrite.close()
