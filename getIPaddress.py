@@ -29,4 +29,4 @@ secondoct = ipoct[1]
 thirdoct = ipoct[2]
 fourthoct = ipoct[3]
 
-print firstoct + " " + secondoct + " " + thirdoct + " " + fourthoct
+print firstoct + "." + secondoct + "." + thirdoct + "." + fourthoct
