@@ -3,7 +3,7 @@
 import subprocess
 
 command = subprocess.Popen('ip link',shell=True, stdout=subprocess.PIPE)
-pipe1 = subprocess.Popen('grep BROADCAST'.split(), stdin=command.stdout, stdout=subprocess.PIPE)
+pipe1 = subprocess.Popen('grep BROADCAST,MULTICAST,UP,LOWER_UP'.split(), stdin=command.stdout, stdout=subprocess.PIPE)
 command.stdout.close()
 pipe2 = subprocess.Popen(['awk', '-F', ':', '{print $2}'], stdin=pipe1.stdout, stdout=subprocess.PIPE)
 pipe1.stdout.close()
