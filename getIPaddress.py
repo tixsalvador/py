@@ -10,22 +10,23 @@ pipe1.stdout.close()
 
 iface = pipe2.communicate()[0].strip()
 
-command2 = subprocess.Popen(['/sbin/ifconfig', '%s' %iface], stdout=subprocess.PIPE)
-grep = subprocess.Popen(['grep', 'inet'], stdin=command2.stdout, stdout=subprocess.PIPE)
+command2 = subprocess.Popen('ip addr', shell=True, stdout=subprocess.PIPE)
+grep1 = subprocess.Popen('grep inet'.split(), stdin=command2.stdout, stdout=subprocess.PIPE)
 command2.stdout.close()
-awk = subprocess.Popen(['awk', '-F', ':', '{print $2}'], stdin=grep.stdout, stdout=subprocess.PIPE)
-grep.stdout.close()
-awk2 = subprocess.Popen("awk '{print$1}'", shell=True, stdin=awk.stdout, stdout=subprocess.PIPE)
-awk.stdout.close()
+grep2 = subprocess.Popen(['grep', '%s' %iface], stdin=grep1.stdout, stdout=subprocess.PIPE)
+grep1.stdout.close()
+awk1 = subprocess.Popen("awk '{print $2}'", shell=True, stdin=grep2.stdout, stdout=subprocess.PIPE)
+grep2.stdout.close()
+awk2 = subprocess.Popen(['awk', '-F', '/', '{print $1}'], stdin=awk1.stdout, stdout=subprocess.PIPE)
+awk1.stdout.close()
 
-ipaddress =  awk2.communicate()[0].strip()
+ipaddr = awk2.communicate()[0].strip()
 
-ipoct = ipaddress.split('.')
+ipoct = ipaddr.split('.')
 
-firstoctet = ipoct[0]
-secondoctet = ipoct[1]
-thirdoctet = ipoct[2]
-fourthoctet = ipoct[3]
+firstoct = ipoct[0]
+secondoct = ipoct[1]
+thirdoct = ipoct[2]
+fourthoct = ipoct[3]
 
-for i in ipoct:
-        print i
+print firstoct + " " + secondoct + " " + thirdoct + " " + fourthoct
