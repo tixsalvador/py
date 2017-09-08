@@ -17,6 +17,7 @@ analogpin = board.get_pin('a:0:i')
 
 try:
 	while True:
+		sleep(.006) # added due to pindata has nonetype value
 		pindata = analogpin.read()
 		print pindata
 
