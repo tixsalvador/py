@@ -19,3 +19,6 @@ awk2.stdout.close()
 ipaddress = awk3.communicate()[0].strip()
 
 ipoct = ipaddress[:ipaddress.rfind(".")] + "."
+
+for i in range(1,10):
+  ping = subprocess.call('ping -c 1  %s%s' %(ipoct,i),shell=True)
