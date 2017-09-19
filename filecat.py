@@ -25,3 +25,19 @@ with open ("storelist.csv","r") as f:
                 filewrite.write(i[0] + "\n") # Write 1 column
 		 filewrite.write(i[0] + " " +  i[1] + "\n") # Write multiple columns
 filewrite.close()
+
+
+
+
+# Add columns and write to file
+
+#!/usr/bin/env python
+
+new = open("shit.csv", "w")
+
+with open("storelist.csv","ro")as f:
+	ff = [line.split(' ')[0] for line in f]
+	for i in ff:
+		w = i.strip()
+		new.write  (w + "," + "Manila" + "," + "mycompany" + "\n")
+new.close()
