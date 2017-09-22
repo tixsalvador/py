@@ -28,10 +28,7 @@ try:
 		sleep(.020)
 		analog_0 = analog0.read()
 		analog_1 = analog1.read()
-		analog_2 = analog2.read()
-		analog_0 = int((analog_0 * 128 / 1000) * 1000) 
-		analog_1 = int((analog_1 * 128 / 1000) * 1000) 
-		analog_2 = int((analog_2 * 128 / 1000) * 1000) 
+		analog_2 = analog2.read() 
 		rgbcolor(analog_0,analog_1,analog_2)	
 except KeyboardInterrupt:
 	board.exit()
