@@ -22,3 +22,9 @@ None
 <_sre.SRE_Match object at 0x7fa199d2aa48>
 >>> print match.groups()
 ('Oct  6 23:59:32', 'campBIGfalcon', '0.0.0.0')
+>>> print match.group(1)
+Oct  6 23:59:32
+>>> print match.group(2)
+campBIGfalcon
+>>> print match.group(3)
+0.0.0.0
