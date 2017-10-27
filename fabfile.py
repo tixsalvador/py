@@ -64,8 +64,8 @@ def pick_server(mylist):
     while not 1<=database<=len(mylist):
          for i, db in enumerate(mylist,1):
              print "[%s] - %s" % (i, db)
-    database =  prompt("Enter the number of the database should I connect %s to: " % (env.host), validate=int)
-    return int(database)-1
+         database =  prompt("Enter the number of the database should I connect %s to: " % (env.host), validate=int)
+         return int(database)-1
 
 @roles("all")
 def upgrade_servers():
