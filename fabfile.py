@@ -21,7 +21,7 @@ download_files = {
 
 @roles("database")
 def install_database():
-    sudo("yum -y install %s" % "".join(packages_required["database"]), pty=True)
+    sudo("yum -y install %s" % " ".join(packages_required["database"]), pty=True)
     sudo("systemctl enable mariadb", pty=True)
     sudo("systemctl start mariadb", pty=True)  
     sudo(r""" mysql -h 127.0.0.1 -u root -e "CREATE USER 'web'@'%' IDENTIFIED BY 'web'; GRANT ALL PRIVILEGES ON *.* TO 'web'@'%'; FLUSH PRIVILEGES;" """)
@@ -40,7 +40,7 @@ def setup_database():
 
 @roles("webserver")
 def install_webserver():
-    sudo("yum -y install %s" % "".join(packages_required["webserver"]), pty=True)
+    sudo("yum -y install %s" % " ".join(packages_required["webserver"]), pty=True)
     sudo("systemctl enable httpd.service", pty=True)
     sudo("systemctl start httpd.service", pty=True)
     sudo("setsebool -P httpd_can_network_connect=1", pty=True)
